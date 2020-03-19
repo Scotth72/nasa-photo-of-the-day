@@ -8,20 +8,21 @@ function App() {
   useEffect(() =>{
     axios.get('https://api.nasa.gov/planetary/apod?api_key=DGbNkI6srem2I3Em3svwRVdLuYUlHxhaBztkj0pU')
     .then(response =>{
-      console.log("NasaCard.data", response.data)
-      setPic(response.data)
+      console.log("NasaCard.data", response.data);
+      setPic(response.data);
     })
     .catch(error => {
-      console.log("Did not receive data", error)
+      console.log("Did not receive data", error);
     })
   }, [])
   return (
     <div className="App">
-      {pic.map(item => {
-        return (
-          <Photocards/>
-        )
-      })}
+          <Photocards
+          img={pic.hdurl}
+          title={pic.title}
+          description={pic.explanation}
+          date={pic.date}
+    />
       
     </div>
   );
